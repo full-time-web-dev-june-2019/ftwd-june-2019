@@ -1,0 +1,22 @@
+
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* #main-heading{
+    background-color: bisque;
+} */
+
+h1{
+    background-color: blue;
+}
+
+.blah{
+    background-color: red;
+}
+
+.menu-hints > .cool {
+    background-color: #40a0b7;
+    margin: 5px;
+}
+
