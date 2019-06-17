@@ -1,0 +1,16 @@
+.big-blue{
+    height: 200px;
+    width: 300px;
+    background-color: blue;
+    color: red;
+    font-size: 40px;
+}
+
+
+.small-red{
+    height: 30px;
+    width: 80px;
+    background-color: red;
+    color: blue;
+    font-size: 6px;
+}
