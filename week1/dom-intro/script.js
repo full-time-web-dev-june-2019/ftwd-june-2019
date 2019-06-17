@@ -1,11 +1,22 @@
 
-let theButton = document.getElementById('add-item-button');
-let theList = document.getElementById('item-list');
+window.onload = function(){
+   
+    let theButton = document.getElementById('add-item-button');
+    let theList = document.getElementById('item-list');
+    
+    theList.style.backgroundColor = "red";
+    
+    let theInput1 = document.getElementById("what-to-add1");
+    let theInput2 = document.getElementById("what-to-add2");
 
-let theInput1 = document.getElementById("what-to-add1");
-let theInput2 = document.getElementById("what-to-add2");
+    let colorButtons = document.getElementsByClassName('color-button');
+    let arr = [...colorButtons];
 
-theButton.onclick = function(){
+
+
+
+
+theButton.onclick = function (){
     let newThingToAdd1 = theInput1.value;
     let newThingToAdd2 = theInput2.value;
 
@@ -13,13 +24,12 @@ theButton.onclick = function(){
     newListItem.innerText = Number(newThingToAdd1) + Number(newThingToAdd2);
     theList.appendChild(newListItem);
 
-    theInput.value = "";
+    // theInput.value = "";
     // let secondThing = document.querySelector("#item-list li:nth-child(2)");
     // theList.insertBefore(newListItem, secondThing);
 }
 
-let colorButtons = document.getElementsByClassName('color-button');
-let arr = [...colorButtons];
+
 
 arr.forEach((eachButton)=>{
     eachButton.onclick = function(e){
@@ -34,3 +44,6 @@ arr.forEach((eachButton)=>{
         }
     }
 })
+
+
+}
