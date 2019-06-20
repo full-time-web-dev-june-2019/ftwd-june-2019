@@ -29,6 +29,9 @@ var memoryGame = new MemoryGame(cards);
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   var html = '';
+
+    memoryGame.shuffleCards();
+
   memoryGame.cards.forEach(function (pic) {
     html += '<div class="card" data-card-name="'+ pic.name +'">';
     html += '  <div class="back" name="'+ pic.img +'"></div>';
@@ -52,19 +55,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if(memoryGame.currentPair.length ===2){
 
-      // memoryGame.checkIfPair()
+      
+      
+      
+      if(memoryGame.checkIfPair() === false){
+        $('.back').addClass('blocked');
 
-      // console.log('there are 2 things in the current hand, time to compare', memoryGame.currentPair[0].data('card-name'), memoryGame.currentPair[1].data('card-name'))
+        setTimeout(()=>{
+          memoryGame.currentPair[0].children().toggleClass('front back');
+          memoryGame.currentPair[1].children().toggleClass('front back');
+          memoryGame.currentPair = [];
+          $('.back').removeClass('blocked');
+        },1500)
+
+
+     } else {
+      memoryGame.currentPair = [];
+     }
+
+     setTimeout(()=>{
+       memoryGame.isFinished();
+     },1750)
+
+
     }
     
+    $('#pairs_clicked').text(memoryGame.pairsClicked);
+    $('#pairs_guessed').text(memoryGame.pairsGuessed);
 
     
   })
-
-
-
-
-
 });
 
 
