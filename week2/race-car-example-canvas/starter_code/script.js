@@ -10,12 +10,22 @@ class Car{
   constructor(){
     this.x=240;
     this.y=500;
-    this.width=50;
+    this.width=30;
     this.height=50;
+    this.image = './images/car.png'
   }
 
   drawItself(){
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillStyle = 'black';
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillStyle = "#8cf442";
+    // ctx.fillRect(this.x + 5, this.y + 5, this.width - 10, this.height - 10);
+    // ctx.fillStyle = 'black'
+    let b = new Image();
+    b.src = this.image;
+    // b.onload = ()=>{
+      ctx.drawImage(b,this.x, this.y, this.width, this.height)
+    // }
   }
 
   moveYourSelf(whichDirection){
@@ -59,10 +69,19 @@ class Obstacle{
     this.y = theY;
     this.width = theWidth;
     this.height = theHeight;
+    this.image = './images/rocket.png'
+  
   }
 
   drawItself(){
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+  
+
+    let w = new Image();
+    w.src = this.image;
+
+      ctx.drawImage(w, this.x, this.y, this.width, this.height);
+
+
   }
 
   moveDownForever(){
@@ -134,14 +153,16 @@ class Obstacle{
 
   
 
-
+  let frames = 1;
 
 
   function animate(){
-    setInterval(()=>{
+    frames++;
+
+   
       ctx.clearRect(0,0,500,550);
       
-      let randomNum = Math.floor(Math.random()* 50)
+      // let randomNum = Math.floor(Math.random()* 50)
 
       let randomX = Math.floor(Math.random()* 500)
 
@@ -149,16 +170,25 @@ class Obstacle{
 
       let randomHeight = Math.floor(Math.random()* 50) + 20;
 
-      if(randomNum === 2){
-        let obs = new Obstacle(randomX, 0, randomWidth, randomHeight);
-        allTheObstacles.push(obs);
-        obs.moveDownForever();
-      }
+      // if(randomNum === 2){
+
+        if(frames%300===0){
+ 
+          let obs = new Obstacle(randomX, 0, randomWidth, randomHeight);
+          allTheObstacles.push(obs);
+          obs.moveDownForever();
+        }
+
+      // }
 
       drawEverything();
       detectCollisions();
-    }, 50);
 
+
+
+      requestAnimationFrame(animate);
+
+    
   }
 
 
