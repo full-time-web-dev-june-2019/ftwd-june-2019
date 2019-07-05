@@ -1,0 +1,35 @@
+<h2>This is the SearchPage</h2>
+
+
+<!-- Simple form which will send a GET request -->
+<form action="/searchResults" method="GET"  >
+  <label >Search Terms:</label>
+  <input type="text" name="searchTerm1">
+  <input type="text" name="searchTerm2">
+  <input type="text" name="searchTerm3">
+  <input type="text" name="searchTerm4">
+
+  <input type="submit" value="Search">
+  {{!-- <button type="submit">Search</button> --}}
+</form>
+
+
+
+<h2>Login</h2>
+<form action="/loginVerify" method="POST">
+
+<label>Username</label>
+<input type="text" name="theUse" >
+
+<label>Password</label>
+<input type="text" name="thePass">
+
+
+<button type="submit">Login</button>
+
+</form>
+
+
+
+
+
