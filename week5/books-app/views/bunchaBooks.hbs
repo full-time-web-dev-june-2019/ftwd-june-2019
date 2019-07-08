@@ -1,0 +1,31 @@
+<h1>Books List</h1>
+
+
+{{#each books}}
+
+ <div>
+    <h3>
+     <a href="/books/details/{{this._id}}">
+        {{this.title}}
+    </a>
+ </h3>
+     
+    <p>by: {{this.author}}</p>
+    
+    <button class="btn">
+
+    <a href="/books/edit/{{this._id}}">Edit This Book</a>
+
+    </button>
+
+
+<form action="/books/delete/{{this._id}}" method="POST">
+   <button class="btn">Delete This Book </button>
+</form>
+
+    <p>----------------------------------------------</p>
+</div>
+ 
+
+
+{{/each}}
