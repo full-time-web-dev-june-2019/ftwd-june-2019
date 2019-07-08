@@ -57,5 +57,8 @@ app.use('/', index);
 const bookRoutesVar = require('./routes/bookRoutes');
 app.use('/', bookRoutesVar);
 
+const authorRoutes = require('./routes/authorRoutes');
+app.use('/', authorRoutes);
+
 
 module.exports = app;

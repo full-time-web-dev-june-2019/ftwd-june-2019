@@ -10,7 +10,16 @@
 <input name="theTitle" type="text">
 
 <label>Author</label>
-<input name="theAuthor" type="text">
+{{!-- <input name="theAuthor" type="text"> --}}
+<select name="theAuthor" >
+
+    {{#each authors}}
+
+    <option value="{{this._id}}">{{this.name}}</option>
+
+    {{/each}}
+
+</select>
 
 <label>Descritpion</label>
 <input name="theDescription" type="text">

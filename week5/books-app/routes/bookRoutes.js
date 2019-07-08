@@ -1,13 +1,14 @@
 const express = require('express');
 const router  = express.Router();
 const Book    = require('../models/Book');
+const Author  = require('../models/Author');
 
 
 
 router.get('/books', (req, res, next)=>{    
-    Book.find()
+    Book.find().populate('author')
     .then((allTheBooks)=>{
-        res.render('bunchaBooks', {books: allTheBooks})
+        res.render('book-views/bunchaBooks', {books: allTheBooks})
     })
     .catch((err)=>{
         console.log(err);
@@ -18,7 +19,7 @@ router.get('/books', (req, res, next)=>{
 router.get('/books/details/:idOfBook', (req, res, next)=>{
     Book.findById(req.params.idOfBook)
     .then((oneSingleBook)=>{
-        res.render('bookDetails', {theBook:oneSingleBook})
+        res.render('book-views/bookDetails', {theBook:oneSingleBook})
     })
     .catch((err)=>{
         next(err);
@@ -26,12 +27,34 @@ router.get('/books/details/:idOfBook', (req, res, next)=>{
 })
 
 
+
+
+
 router.get('/books/new', (req, res, next)=>{
-    res.render('newBook');
+
+    Author.find()
+    .then((allTheAuthors)=>{
+        
+        res.render('book-views/newBook', {authors: allTheAuthors});
+    })
+    .catch((err)=>{
+        next(err);
+    })
+
+
+
 })
+
+
+
+
+
+
 
 router.post('/books/create-new-book', (req, res, next)=>{
     const {theTitle, theDescription, theAuthor, theRating} = req.body;
+    console.log(theTitle, theDescription, theRating, theAuthor)
+
     // this is like saying
     // const title = req.body.title;
     // const descrtiption = req.body.descrition;
@@ -51,7 +74,7 @@ router.post('/books/create-new-book', (req, res, next)=>{
 router.get('/books/edit/:id', (req, res, next)=>{
     Book.findById(req.params.id)
     .then((bookFromDb)=>{
-            res.render('editBook', {book: bookFromDb})
+            res.render('book-views/editBook', {book: bookFromDb})
     })
     .catch((err)=>{
         next(err);
