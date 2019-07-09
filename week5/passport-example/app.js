@@ -68,8 +68,6 @@ app.use(session({
 }));
 
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 
@@ -108,6 +106,11 @@ passport.use(new LocalStrategy((username, password, next) => {
     return next(null, user);
   });
 }));
+
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use((req, res, next) => {
