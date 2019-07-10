@@ -1,0 +1,9 @@
+
+#char-section{
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightside div{
+    margin: 10px;
+}

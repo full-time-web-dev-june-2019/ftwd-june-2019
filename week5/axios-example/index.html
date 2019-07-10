@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+
+
+
+</head>
+<body>
+
+    <h2>Get Country Info</h2>
+
+        <input id="theInput" type="text">
+        <button id="theButton">Get the country</button>
+          
+      <!-- the data we get from the API will be populated in here:   -->
+        <h1 id="countryName"></h1>
+        <p id="countryCapital"></p>
+
+        <hr>
+
+        <div id="char-section">
+
+            <div class="leftside">
+                <h3>Characters Section</h3>
+                <button id="char-btn">Get List of Characters</button>
+                <div id="list-of-chars"></div>
+            </div>
+
+
+            <div class="rightside">
+
+                <div>
+                    <h4>Add New Character</h4>
+                    <div>
+                        <label>Name</label>
+                        <input id="new-name" type="text">
+                    </div>
+
+                    <div>
+                        <label>Occupation</label>
+                        <input id="new-occupation" type="text">
+                    </div>
+
+                    <div>
+                        <label>Weapon</label>
+                        <input id="new-weapon" type="text">
+                    </div>
+
+                    <div>
+                        <label>Debt</label>
+                        <input id="new-debt" type="checkbox">
+                    </div>
+
+
+                    <button id="add-new-btn">Submit</button>
+                </div>
+
+            </div>
+            
+        </div>
+
+
+
+    
+</body>
+</html>
