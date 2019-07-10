@@ -18,6 +18,8 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const flash = require("connect-flash");
 
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
 
 mongoose.Promise = Promise;
 mongoose
@@ -109,6 +111,84 @@ passport.use(new LocalStrategy((username, password, next) => {
 
 
 
+
+
+
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLEID,
+  clientSecret: process.env.GOOGLESECRET,
+  callbackURL: "/auth/google/callback"
+}, (accessToken, refreshToken, profile, done) => {
+  User.findOne({ googleID: profile.id })
+  .then(user => {
+
+
+ 
+    if (user) {
+      return done(null, user);
+    } else{
+      // this else means we did not find a user with this googleID 
+
+      User.findOne({email: profile._json.email})
+      .then((userWithThatName)=>{
+
+        if(userWithThatName){
+          userWithThatName.googleID = profile.id
+          userWithThatName.save()
+          .then((updatedUser)=>{
+            done(null, updatedUser)
+          })
+          .catch((err)=>{
+            next(err);
+          })
+
+        } else {
+          // this else means theres nobody with that google id or with that name
+
+          const newUser = new User({
+            googleID: profile.id,
+            email: profile._json.email
+          });
+      
+          newUser.save()
+          .then(user => {
+            done(null, newUser);
+          })
+          .catch(error => {
+            next(error)
+          })
+
+
+        }
+
+      })
+      .catch((err)=>{
+        next(err);
+      })
+
+
+    
+
+
+    }
+
+
+
+
+
+  })
+  .catch(error => {
+    next(error)
+  })
+  
+
+}));
+
+
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -130,6 +210,9 @@ app.use('/', index);
 
 const userRoutes = require('./routes/user-routes');
 app.use('/', userRoutes);
+
+const postRoutes = require('./routes/blog-post-routes');
+app.use('/', postRoutes)
 
 
 module.exports = app;
