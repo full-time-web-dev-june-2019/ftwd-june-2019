@@ -1,0 +1,22 @@
+<h2> Lets Create a Movie </h2>
+
+<form id="createMovieForm" action="/movie/create" method="post">
+  <label for="titleInput"> Title </label>
+  <input id="titleInput" type="text" name="title" placeholder="Harry Potter">
+
+  <label for="genreInput"> Genre </label>
+  <input id="genreInput" type="text" name="genre" placeholder="Reality">
+
+  <label for="plotInput"> Plot </label>
+  <input id="plotInput" type="text" name="plot" placeholder="Kid Learns To be A Wizard!">
+
+  <h4> Who is the star of your Movie </h4>
+  {{#each celebs}}
+    <label for="actorInput"> {{this.name}} </label>
+    <input type="radio" name="celeb" value="{{this._id}}">
+  {{/each}}
+
+  <br />
+
+  <button> Save </button>
+</form>

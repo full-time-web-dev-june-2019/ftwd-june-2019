@@ -1,0 +1,13 @@
+<h2> List Of Celebs </h2>
+
+{{#if theMsg}}
+  <h3> {{theMsg}} </h3>
+{{/if}}
+
+<div class="celebList">
+  {{#each allCelebs}}
+    <div class="celebBox">
+      <a href="/celeb/detail/{{this._id}}">{{this.name}}</a>
+    </div>
+  {{/each}}
+</div>

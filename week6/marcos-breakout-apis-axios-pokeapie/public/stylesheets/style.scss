@@ -1,0 +1,33 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.listView {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pokeCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listOfPoke {
+  margin-bottom: 5px;
+}
+
+.listOfPoke input {
+  display: none;
+}
+
+.pokeImg {
+  height: 30vh;
+}

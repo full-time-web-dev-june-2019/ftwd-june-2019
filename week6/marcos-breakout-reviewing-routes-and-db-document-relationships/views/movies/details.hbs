@@ -1,0 +1,17 @@
+<h2> {{movieDetail.title}} Details </h2>
+
+<h3> Name: {{movieDetail.title}} </h3>
+<h4> Occupation: {{movieDetail.genre}} </h4>
+<h4> CatchPhrase: {{movieDetail.plot}} </h4>
+
+<hr>
+
+<h4> Main Actor: {{movieDetail.celeb.name}} </h4>
+<h4> Occupation: {{movieDetail.celeb.occupation}} </h4>
+<h4> CatchPhrase: {{movieDetail.celeb.catchPhrase}} </h4>
+
+{{#if message}}
+  <h3 class="message"> {{message}} </h3>
+{{!-- {{else}}
+  <h3> These are the movie Details </h3> --}}
+{{/if}}

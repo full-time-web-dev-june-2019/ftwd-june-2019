@@ -1,0 +1,48 @@
+<h1> Poke API </h1>
+
+
+<div class="listView">
+
+  {{#if allPoke}}
+  <div class="pokeCard">
+    <h3> This is the list of pokes </h3>
+    <div>
+      {{#each allPoke}}
+      <div class="listOfPoke">
+        <h6> blah: {{../randomVar}} </h6>
+        <a href="/api/details/{{@index}}">{{this.name}}</a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if allTypes}}
+  <div class="pokeCard">
+    <h3> This is All the Types </h3>
+    <div>
+      {{#each allTypes}}
+      <div class="listOfPoke">
+        <a href="/api/typeSearch/{{@index}}">{{this.name}}</a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+
+  {{#if allPokeByType}}
+  <div class="pokeCard">
+    <h3> This is All the Types </h3>
+    <div>
+      {{#each allPokeByType}}
+        <form class="listOfPoke" action="/api/detailsByType" method="post">
+          <input type="text" name="theUrl" value="{{this.pokemon.url}}">
+          <button name="button">{{this.pokemon.name}}</button>
+        </form>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+</div>

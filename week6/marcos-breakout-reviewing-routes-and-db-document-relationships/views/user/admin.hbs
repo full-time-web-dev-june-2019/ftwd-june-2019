@@ -1,0 +1,21 @@
+<h2> Hello {{currentUser.username}} </h2>
+
+
+<div class="adminListContainer">
+  <div class="adminList">
+    {{#each allUsers}}
+      <a href="/admin/details/user/{{this._id}}"> {{this.username}} </a>
+    {{/each}}
+  </div>
+  <div class="adminList">
+    {{#each allMovies}}
+      <a href="/admin/details/movie/{{this._id}}"> {{this.title}} </a>
+    {{/each}}
+  </div>
+  <div class="adminList">
+    {{#each allCelebs}}
+      <a href="/admin/details/celeb/{{this._id}}"> {{this.name}} </a>
+    {{/each}}
+  </div>
+
+</div>

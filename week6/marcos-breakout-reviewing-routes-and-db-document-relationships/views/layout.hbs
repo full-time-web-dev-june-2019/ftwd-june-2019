@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div>
+      <a href="/"> Home </a>
+      <a href="/celeb"> Celeb Home </a>
+      <a href="/celeb/list"> Celebs List </a>
+      <a href="/movie"> Movie Home </a>
+      <a href="/movie/list"> Movies List </a>
+    </div>
+
+    <div>
+      {{#if currentUser}}
+      <h4> Hello, {{currentUser.username}} </h4>
+      <a href="/user/profile"> Profile </a>
+      <a href="/celeb/create"> Create Celeb </a>
+      <a href="/movie/create"> Movie Create </a>
+      <a href="/auth/logout"> Logout </a>
+      {{else}}
+      <a href="/auth/login"> Login </a>
+      <a href="/auth/signup"> Signup </a>
+      {{/if}}
+    </div>
+
+  </nav>
+
+  {{{body}}}
+
+  <script src="/javascripts/script.js"></script>
+</body>
+</html>

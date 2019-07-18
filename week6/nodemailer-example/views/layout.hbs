@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <a href="/signup">Signup</a>
+
+    <a href="/login">Login</a>
+
+    <a href="/blah">blah page</a>
+
+    <a href="/">Home</a>
+
+    <a href="/posts">view Posts</a>
+
+    <a href="/posts/add-new">Add New Post</a>
+
+    <a href="/forgot-password">forgot-password</a>
+
+    
+
+    <form action="/logout" method="POST"><button>Logout</button></form>
+
+      {{#if msg}}
+      {{msg}}
+      {{/if}}
+
+    {{{body}}}
+
+    <script src='/javascripts/script.js'></script>
+  </body>
+</html>

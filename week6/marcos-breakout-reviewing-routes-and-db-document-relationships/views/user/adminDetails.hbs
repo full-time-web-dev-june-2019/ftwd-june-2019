@@ -1,0 +1,48 @@
+<h2> Details for {{pageTitle}} </h2>
+
+
+{{#if isUser}}
+  <div class="">
+    <h3>Name: {{info.username}}</h3>
+    <h4>role: {{info.role}}</h4>
+    <form class="updateForm" action="/admin/updateUserRole" method="post">
+      <input class="hidden" type="text" name="theId" value="{{info._id}}">
+
+      <p>Please select your preferred Role:</p>
+      <div>
+        <input type="radio" id="contactChoice1"
+         name="contact" value="Boss">
+        <label for="contactChoice1">Boss</label>
+
+        <input type="radio" id="contactChoice2"
+         name="contact" value="Producer">
+        <label for="contactChoice2">Producer</label>
+
+        <input type="radio" id="contactChoice3"
+         name="contact" value="Celebrity">
+        <label for="contactChoice3">Celebrity</label>
+      </div>
+
+      <button> Save Changes </button>
+    </form>
+  </div>
+{{/if}}
+
+
+{{#if isMovie}}
+  <div class="">
+    <h3>Title: {{info.title}}</h3>
+    <h4>Genre: {{info.genre}}</h4>
+    <h4>Plot: {{info.plot}}</h4>
+    <h4>Star Celeb: {{info.celeb.name}}</h4>
+  </div>
+{{/if}}
+
+
+{{#if isCeleb}}
+  <div class="">
+    <h3>Name: {{info.name}}</h3>
+    <h4>Occupation: {{info.occupation}}</h4>
+    <h4>Catchphrase: {{info.catchPhrase}}</h4>
+  </div>
+{{/if}}
