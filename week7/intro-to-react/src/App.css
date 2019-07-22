@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.top-section{
+  display: flex;
+  justify-content: space-around;
+}
+
+.top-section > form{
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 20px 70px;
+}

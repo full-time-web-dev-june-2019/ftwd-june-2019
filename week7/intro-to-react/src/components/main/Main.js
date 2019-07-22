@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
+import User from '../user-component/User';
 
 class Main extends Component {
 
@@ -19,6 +20,8 @@ class Main extends Component {
 
   render(){
 
+  
+
 
   return (
     <div>
@@ -30,7 +33,18 @@ class Main extends Component {
        <ul>
            {this.showAnimals()}
        </ul>
-   
+
+       {/* <User theUser = 'blah' wow="hello" /> */}
+       {/* you can pass in random arbitrary props as well as the ones youre actually using */}
+
+        {this.props.firstUser &&  <User theUser = {this.props.firstUser} />}
+
+      
+        {this.props.secondUser &&  <User theUser = {this.props.secondUser} />}
+        {/* this is the same as saying IF this.props.secondUser exists, show all the stuff on the right side of the && */}
+      
+
+
     </div>
   );
   }
