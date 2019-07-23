@@ -1,0 +1,32 @@
+.contact-card{
+  display: flex;
+  align-items: center;
+}
+
+.contact-card > img{
+  width: 150px;
+}
+
+.contact-card > span{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.contact-card > *{
+  margin: 20px;
+}
+
+.table-heading{
+  display: flex;
+  width: 550px;
+  justify-content: space-around;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.btn{
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 3px;
+  margin: 10px;
+}
