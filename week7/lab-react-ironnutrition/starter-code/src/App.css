@@ -1,0 +1,28 @@
+.add-new-food-form{
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
+  width: 30%;
+}
+
+.btn{
+  margin: 20px;
+}
+
+.btn-inline{
+  margin: 0 20px;
+}
+
+.search{
+  margin: 20px;
+}
+
+.whole-page{
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-side{
+  padding-top: 100px;
+}
