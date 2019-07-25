@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+.single-product{
+
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+}

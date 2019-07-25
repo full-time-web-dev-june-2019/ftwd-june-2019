@@ -1,0 +1,15 @@
+
+.search{
+    width: 30%;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
+.stocked-check{
+    margin-left: 20px;
+    transform: scale(1.5)
+  
+}
