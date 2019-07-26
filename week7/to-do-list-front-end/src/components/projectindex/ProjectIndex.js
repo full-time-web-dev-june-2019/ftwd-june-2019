@@ -75,6 +75,7 @@ class ProjectIndex extends Component {
 
 
   render(){
+      if(this.props.ready)
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
@@ -85,6 +86,9 @@ class ProjectIndex extends Component {
         </div>
       </div>
     )
+    else
+    return(<h3>loading...</h3>)
+    
   }
 }
 

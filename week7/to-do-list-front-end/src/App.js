@@ -12,7 +12,9 @@ class App extends React.Component {
 
   constructor(props){
     super(props)
-    this.state = { listOfProjects: [] };
+    this.state = { listOfProjects: [],
+    ready: false,
+   };
   
   
   }
@@ -21,13 +23,16 @@ class App extends React.Component {
     axios.get(`http://localhost:5000/api/projects`)
     .then(responseFromApi => {
       this.setState({
-        listOfProjects: responseFromApi.data
+        listOfProjects: responseFromApi.data, ready: true
       })
     })
   }
 
   componentDidMount() {
-    this.getAllProjects();
+    
+      this.getAllProjects();
+
+
   }
 
 
@@ -44,11 +49,14 @@ render(){
            {...props} 
            allTheProjects ={this.state.listOfProjects}
            getData = {this.getAllProjects}
+           ready = {this.state.ready}
            />} />
 
           <Route exact path="/projects/:theID" render ={(props)=> <ProjectDetails
            {...props} 
            allTheProjects ={this.state.listOfProjects}
+           ready = {this.state.ready}
+           getData = {this.getAllProjects}
            />} />
 
 
