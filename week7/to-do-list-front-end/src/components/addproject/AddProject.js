@@ -13,7 +13,7 @@ class AddProject extends Component {
     axios.post("http://localhost:5000/api/projects", {
        theTitle: this.state.newTitle,
         theDescription: this.state.newDescription
-      })
+      }, {withCredentials: true })
     .then( () => {
         this.props.getData();
         // this function updates the list in ProjectIndex.js

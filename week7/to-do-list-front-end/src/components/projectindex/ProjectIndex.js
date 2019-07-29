@@ -39,7 +39,17 @@ class ProjectIndex extends Component {
 
 
   showProjects = () =>{
-    return this.props.allTheProjects.map((project, index) => {
+
+    if(!this.props.theUser){
+        this.props.history.push('/')
+        return;
+    }
+
+    const myProjects = this.props.allTheProjects.filter((eachP)=>{
+        return eachP.owner === this.props.theUser._id;
+    })
+
+    return myProjects.map((project, index) => {
         if(this.state.editing !== index){
 
             return (
