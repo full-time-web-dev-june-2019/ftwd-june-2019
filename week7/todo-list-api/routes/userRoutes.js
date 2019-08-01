@@ -108,11 +108,7 @@ router.post('/logout', (req, res, next) => {
 router.get('/getcurrentuser', (req, res, next) => {
     // req.isAuthenticated() is defined by passport
     if (req.user) {
-        let newObject = {};
-        newObject.username = req.user.username;
-        newObject._id = req.user._id;
-
-        res.status(200).json(newObject);
+        res.status(200).json(req.user);
         return;
     }
     res.status(403).json({ message: 'Unauthorized' });
