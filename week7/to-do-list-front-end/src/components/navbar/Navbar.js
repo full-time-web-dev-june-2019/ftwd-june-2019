@@ -18,9 +18,9 @@ function Navbar(props){
 
 
         <nav>
-            {props.theUser && 
+            {/* {props.theUser &&  */}
         <Link to="/projects" style={{ textDecoration: 'none', margin: '10px' }}>Projects</Link>
-            }
+            {/* } */}
 
 
         {!props.theUser && 

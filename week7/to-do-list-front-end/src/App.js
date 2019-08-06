@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Route, Link, Switch} from 'react-router-dom';
+import {Route, Link, Switch, Redirect} from 'react-router-dom';
 import ProjectIndex from './components/projectindex/ProjectIndex.js'
 import ProjectDetails from './components/projectdetails/ProjectDetails';
 import Signup from './components/signup/Signup.js';
@@ -45,7 +45,7 @@ class App extends React.Component {
 getCurrentlyLoggedInUser = () =>{
   this.service.currentUser()
   .then((theUser)=>{
-    this.setState({currentlyLoggedIn: theUser})
+    this.setState({currentlyLoggedIn: theUser, ready: true})
   })
   .catch(()=>{
     this.setState({currentlyLoggedIn: null})
@@ -108,22 +108,37 @@ render(){
       }
 
         <Switch>
-          <Route exact path="/projects" render ={(props)=> <ProjectIndex
-           {...props} 
-           theUser = {this.state.currentlyLoggedIn} 
-           allTheProjects ={this.state.listOfProjects}
-           getData = {this.getAllProjects}
-           ready = {this.state.ready}
-           theUser = {this.state.currentlyLoggedIn}
-           />} />
 
-          <Route exact path="/projects/:theID" render ={(props)=> <ProjectDetails
-           {...props} 
-           allTheProjects ={this.state.listOfProjects}
-           ready = {this.state.ready}
-           getData = {this.getAllProjects}
-           theUser = {this.state.currentlyLoggedIn}
-           />} />
+          
+       
+          <Route exact path="/projects" render ={(props)=>
+          <ProjectIndex
+            {...props} 
+            theUser = {this.state.currentlyLoggedIn} 
+            allTheProjects ={this.state.listOfProjects}
+            getData = {this.getAllProjects}
+            ready = {this.state.ready}
+            theUser = {this.state.currentlyLoggedIn}
+            />   
+          } />
+               
+
+          <Route exact path="/projects/:theID" render ={(props)=> {
+            if(this.state.currentlyLoggedIn)
+            return(
+              <ProjectDetails
+              {...props} 
+              allTheProjects ={this.state.listOfProjects}
+              ready = {this.state.ready}
+              getData = {this.getAllProjects}
+              theUser = {this.state.currentlyLoggedIn}
+              />
+              )
+              else 
+              return(
+                <Redirect to="/"/>
+              )
+            }} />
 
 
 

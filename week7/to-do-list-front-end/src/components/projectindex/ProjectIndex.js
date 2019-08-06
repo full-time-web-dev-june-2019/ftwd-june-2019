@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AddProject from '../addproject/AddProject.js';
 import EditProject from '../editproject/EditProject.js';
 
@@ -11,8 +11,17 @@ class ProjectIndex extends Component {
         super(props)
         this.state = {
             editing: false,
+            bufferFinished: false,
         }
     }
+
+    componentDidMount(){
+        setTimeout(()=>{
+            this.setState({bufferFinished: true})
+        }, 1000)
+    }
+
+
 
     changeEditing = (whichNumber) => {
         this.setState({editing: whichNumber})
@@ -39,12 +48,7 @@ class ProjectIndex extends Component {
 
 
   showProjects = () =>{
-
-    if(!this.props.theUser){
-        this.props.history.push('/')
-        return;
-    }
-
+    
     const myProjects = this.props.allTheProjects.filter((eachP)=>{
         return eachP.owner === this.props.theUser._id;
     })
@@ -85,9 +89,9 @@ class ProjectIndex extends Component {
 
 
   render(){
-      if(this.props.ready)
-    return(
-      <div>
+      if(this.props.theUser && this.props.allTheProjects){
+          return(
+              <div>
         <div style={{width: '60%', float:"left"}}>
          {this.showProjects()}
         </div>
@@ -96,8 +100,12 @@ class ProjectIndex extends Component {
         </div>
       </div>
     )
-    else
-    return(<h3>loading...</h3>)
+}
+    else if(this.state.bufferFinished){
+        return(<Redirect to="/" />)
+    } else{
+        return(<h2>loading...</h2>)
+    }
     
   }
 }
