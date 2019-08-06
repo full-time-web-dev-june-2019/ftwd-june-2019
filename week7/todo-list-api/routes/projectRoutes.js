@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const Project = require('../models/Project');
 const Task    = require('../models/Task');
+const uploadMagic = require('../config/cloudinary');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -31,13 +32,24 @@ router.get('/', (req, res, next) => {
 
 
 
-  router.post('/', (req, res, next)=>{
+  router.post('/', uploadMagic.single('theImageParameter') ,(req, res, next)=>{
+
+    let theImage;
+
+    if(req.file){
+      theImage = req.file.url
+    } else{
+      theImage = 'http://getwallpapers.com/wallpaper/full/e/1/2/41252.jpg'
+    }
+
+
 
     Project.create({
       title: req.body.theTitle,
       description: req.body.theDescription,
       tasks: [],
-      owner: req.user._id
+      owner: req.user._id,
+      image: theImage
     })
     .then((singleProject)=>{
       res.json(singleProject);
@@ -49,11 +61,17 @@ router.get('/', (req, res, next) => {
 
   })
 
-  router.post('/update/:id', (req, res, next)=>{
-    Project.findByIdAndUpdate(req.params.id, {
-      title: req.body.theTitle,
-      description: req.body.theDescription
-    })
+  router.post('/update/:id', uploadMagic.single('theImageParameter'), (req, res, next)=>{
+
+    let theUpdate = {};
+    theUpdate.title = req.body.theTitle;
+    theUpdate.description = req.body.theDescription
+
+    if(req.file){
+      theUpdate.image = req.file.url
+    }
+
+    Project.findByIdAndUpdate(req.params.id, theUpdate)
     .then((singleProject)=>{
       res.json(singleProject);
     })

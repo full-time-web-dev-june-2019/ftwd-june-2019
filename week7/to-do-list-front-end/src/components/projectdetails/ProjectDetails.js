@@ -80,6 +80,9 @@ class ProjectDetails extends Component{
                         {theActualProject.description}
                     </h3>
 
+
+                    <img style={{width: '400px'}} src={theActualProject.image} />
+
                         {theActualProject.tasks.length > 0 && 
                             <ul>
                                 <h3>Tasks For This Project</h3>
